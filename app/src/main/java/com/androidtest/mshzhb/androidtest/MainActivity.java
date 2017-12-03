@@ -18,6 +18,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public long PRIME_MAX = 100000;
+    public long SUM_MAX = 10000000;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,25 +28,71 @@ public class MainActivity extends AppCompatActivity {
         final TextView textViewPrimeTest = (TextView) findViewById(R.id.textViewPrime);
         Button buttonPrimeTest = (Button) findViewById(R.id.buttonPrime);
 
+        final TextView textViewSumTest = (TextView) findViewById(R.id.textViewSum);
+        Button buttonSumTest = (Button) findViewById(R.id.buttonSum);
+
+        //Prime Test
         buttonPrimeTest.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 long primeTimeJava = primeTestJava();
                 long primeTimeCPP = primeTestCPP();
 
-                Double speedup = BigDecimal.valueOf((double)primeTimeJava/primeTimeCPP*100)
-                        .setScale(2, RoundingMode.HALF_UP)
-                        .doubleValue();
+                Double speedup = speedup(primeTimeJava, primeTimeCPP);
 
                 textViewPrimeTest.setText("Java time: " + primeTimeJava + " milliseconds\n" +
                         "C++ time: "+ primeTimeCPP + " milliseconds\n" +
                 "Speedup: " + speedup +"%");
             }
         });
+
+        //Sum Test
+        buttonSumTest.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                long timeJava = sumTestJava();
+                long timeCpp = sumTestCPP();
+
+                Double speedup = speedup(timeJava, timeCpp);
+
+                textViewSumTest.setText("Java time: " + timeJava + " milliseconds\n" +
+                        "C++ time: "+ timeCpp + " milliseconds\n" +
+                        "Speedup: " + speedup +"%");
+            }
+        });
     }
+
+    public double speedup(long timeJava, long timeCpp){
+        return BigDecimal.valueOf((double)timeJava/timeCpp*100)
+                .setScale(2, RoundingMode.HALF_UP)
+                .doubleValue();
+    }
+
+    public long sumTestJava(){
+        long number;
+        long startTime = System.currentTimeMillis();
+
+        int sum = 0;
+        for (number=0; number<SUM_MAX; number++)
+            sum += number;
+
+        long stopTime = System.currentTimeMillis();
+        long elapsedTime = stopTime - startTime;
+        Log.d("Sum Test", String.valueOf(sum));
+        return elapsedTime;
+    }
+
+    public long sumTestCPP(){
+        long sum;
+        long startTime = System.currentTimeMillis();
+        sum = sumTestCPP(SUM_MAX);
+        long stopTime = System.currentTimeMillis();
+        long elapsedTime = stopTime - startTime;
+        return elapsedTime;
+    }
+
 
     public long primeTestCPP(){
         long startTime = System.currentTimeMillis();
-        primeTestCPPhelper();
+        primeTestCPPhelper(PRIME_MAX);
         long stopTime = System.currentTimeMillis();
         long elapsedTime = stopTime - startTime;
         return elapsedTime;
@@ -82,5 +129,6 @@ public class MainActivity extends AppCompatActivity {
      * which is packaged with this application.
      */
     public native String stringFromJNI();
-    public native long primeTestCPPhelper();
+    public native long primeTestCPPhelper(long PRIME_MAX);
+    public native long sumTestCPP(long SUM_MAX);
 }

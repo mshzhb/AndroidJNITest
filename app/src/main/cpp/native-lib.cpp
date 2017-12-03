@@ -5,7 +5,6 @@
 #include <math.h>
 #include <sys/time.h>
 
-long PRIME_MAX = 100000;
 int my_is_prime(long a);
 
 extern "C"
@@ -26,7 +25,8 @@ JNIEXPORT jlong
 JNICALL
 Java_com_androidtest_mshzhb_androidtest_MainActivity_primeTestCPPhelper(
         JNIEnv *env,
-jobject /* this */
+        jobject /* this */,
+        jlong PRIME_MAX
 ) {
     long num;
     for (num = 0; num < PRIME_MAX; num++)
@@ -35,6 +35,31 @@ jobject /* this */
     return 0;
 
 }
+
+extern "C"
+JNIEXPORT jlong
+
+JNICALL
+Java_com_androidtest_mshzhb_androidtest_MainActivity_sumTestCPP(
+        JNIEnv *env,
+        jobject /* this */,
+        jlong SUM_MAX
+) {
+    long num;
+    long sum = 0;
+    for (num = 0; num < SUM_MAX; num++)
+        sum += num;
+
+    return sum;
+
+}
+
+
+
+
+
+
+
 
 int my_is_prime(long a)
 {
