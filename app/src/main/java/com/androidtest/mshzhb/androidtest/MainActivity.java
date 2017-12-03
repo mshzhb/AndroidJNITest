@@ -17,11 +17,11 @@ public class MainActivity extends AppCompatActivity {
         System.loadLibrary("native-lib");
     }
 
-    public long PRIME_MAX = 10000;
+    public long PRIME_MAX = 100000;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.android_test);
 
 
         final TextView textViewPrimeTest = (TextView) findViewById(R.id.textViewPrime);

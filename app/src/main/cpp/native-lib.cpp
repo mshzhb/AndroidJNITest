@@ -5,7 +5,7 @@
 #include <math.h>
 #include <sys/time.h>
 
-long PRIME_MAX = 10000;
+long PRIME_MAX = 100000;
 int my_is_prime(long a);
 
 extern "C"
