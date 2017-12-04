@@ -66,6 +66,17 @@
                 tools:layout_editor_absoluteX="16dp"
                 tools:layout_editor_absoluteY="28dp" />
 
+            <Button
+                android:id="@+id/buttonGraph"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Graph" />
+
+            <com.github.mikephil.charting.charts.LineChart
+                android:id="@+id/chart"
+                android:layout_width="match_parent"
+                android:layout_height="120dp" />
+
         </LinearLayout>
 
     </ScrollView>

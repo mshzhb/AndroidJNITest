@@ -7,6 +7,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.github.mikephil.charting.charts.LineChart;
+
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 
@@ -38,6 +40,17 @@ public class MainActivity extends AppCompatActivity {
 
         final TextView textViewPiTest = (TextView) findViewById(R.id.textViewPi);
         Button buttonPiTest = (Button) findViewById(R.id.buttonPi);
+
+        Button buttonGraph = (Button) findViewById(R.id.buttonGraph);
+
+        final LineChart chart = (LineChart) findViewById(R.id.chart);
+
+        buttonGraph.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                testHelper.graph(chart);
+            }
+        });
+
 
 
         //Prime Test
@@ -97,7 +110,6 @@ public class MainActivity extends AppCompatActivity {
                 textViewPiTest.setText("Java time: " + timeJava + " milliseconds\n" + "Avg Java time: " +  testHelper.average(testHelper.javaTimeArray[TestHelper.PI_INDEX]) + " milliseconds\n" +
                         "C++ time: "+ timeCpp + " milliseconds\n" + "Avg C++ time: " +  testHelper.average(testHelper.cppTimeArray[TestHelper.PI_INDEX]) + " milliseconds\n" +
                         "Speedup: " + speedup +"%" + "\n" + "Avg Speedup: " + testHelper.averageDouble(testHelper.speedUpArray[TestHelper.PI_INDEX]) +"%");
-
 
             }
         });

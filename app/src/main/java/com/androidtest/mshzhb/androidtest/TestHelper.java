@@ -1,11 +1,19 @@
 package com.androidtest.mshzhb.androidtest;
 
+import android.graphics.Color;
 import android.util.Log;
+
+import com.github.mikephil.charting.charts.LineChart;
+import com.github.mikephil.charting.data.Entry;
+import com.github.mikephil.charting.data.LineData;
+import com.github.mikephil.charting.data.LineDataSet;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
+import java.security.KeyStore;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by mshzhb on 03/12/17.
@@ -94,6 +102,34 @@ public class TestHelper {
         return BigDecimal.valueOf(average/list.size())
                 .setScale(2, RoundingMode.HALF_UP)
                 .doubleValue();
+    }
+
+
+    public void graph(LineChart chart){
+
+        List<Entry> entriesPrimeJava = new ArrayList<>();
+        List<Entry> entriesPrimeCpp = new ArrayList<>();
+
+        for (int i=0; i<javaTimeArray[PRIME_INDEX].size(); i++) {
+            entriesPrimeJava.add(new Entry(i, (long)javaTimeArray[PRIME_INDEX].get(i)));
+        }
+
+        for (int i=0; i<cppTimeArray[PRIME_INDEX].size(); i++) {
+            entriesPrimeCpp.add(new Entry(i, (long)cppTimeArray[PRIME_INDEX].get(i)));
+        }
+
+        LineDataSet dataSetJava = new LineDataSet(entriesPrimeJava, "Java Time"); // add entries to dataset
+        dataSetJava.setColor(Color.CYAN);
+        dataSetJava.setValueTextColor(Color.CYAN);
+
+        LineDataSet dataSetCpp = new LineDataSet(entriesPrimeCpp, "C++ Time"); // add entries to dataset
+        dataSetCpp.setColor(Color.RED);
+        dataSetCpp.setValueTextColor(Color.RED);
+
+
+        LineData lineData = new LineData(dataSetJava, dataSetCpp);
+        chart.setData(lineData);
+        chart.invalidate();
     }
 
 
