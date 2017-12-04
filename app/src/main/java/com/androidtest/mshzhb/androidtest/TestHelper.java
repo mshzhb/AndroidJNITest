@@ -24,7 +24,6 @@ public class TestHelper {
 
     public static String[] TEST_STRING = {"Prime Test", "Sum Test", "Pi Test"};
 
-
     public static int PRIME_INDEX = 0;
     public static int SUM_INDEX = 1;
     public static int PI_INDEX = 2;
@@ -34,9 +33,6 @@ public class TestHelper {
     public List[] javaTimeArray;
     public List[] cppTimeArray;
     public List[] speedUpArray;
-
-
-
 
     public TestHelper() {
         javaTimeArray = new List[TOTAL_NUMUBER_OF_TEST];
@@ -53,6 +49,11 @@ public class TestHelper {
 
     public double speedup(long timeJava, long timeCpp){
         try {
+            if(timeCpp == 0)
+                timeCpp = 1;
+            if(timeJava == 0)
+                timeJava = 1;
+
             double speedup = BigDecimal.valueOf((double) timeJava / timeCpp * 100)
                     .setScale(2, RoundingMode.HALF_UP)
                     .doubleValue();

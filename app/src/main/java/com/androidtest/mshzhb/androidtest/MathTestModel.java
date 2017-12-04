@@ -14,7 +14,7 @@ import static java.lang.Math.pow;
 public class MathTestModel {
 
     public long PRIME_MAX = 100000;
-    public long SUM_MAX = 10000000;
+    public long SUM_MAX = 100000000;
     public int PI_LIMIT = 100000;
 
     // Used to load the 'native-lib' library on application startup.
