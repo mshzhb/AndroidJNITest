@@ -76,7 +76,7 @@ public class MathTestModel {
         long number;
         long startTime = System.currentTimeMillis();
 
-        int sum = 0;
+        long sum = 0;
         for (number=0; number<SUM_MAX; number++)
             sum += number;
 
