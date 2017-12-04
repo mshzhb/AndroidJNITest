@@ -11,7 +11,7 @@ extern "C"
 JNIEXPORT jstring
 
 JNICALL
-Java_com_androidtest_mshzhb_androidtest_MainActivity_stringFromJNI(
+Java_com_androidtest_mshzhb_androidtest_MathTestModel_stringFromJNI(
         JNIEnv *env,
         jobject /* this */) {
     std::string hello = "Hello from C++";
@@ -26,7 +26,7 @@ extern "C"
 JNIEXPORT jdouble
 
 JNICALL
-Java_com_androidtest_mshzhb_androidtest_MainActivity_piTestCPP(
+Java_com_androidtest_mshzhb_androidtest_MathTestModel_piTestCPP(
         JNIEnv *env,
         jobject /* this */,
         jint limit
@@ -65,7 +65,7 @@ extern "C"
 JNIEXPORT jlong
 
 JNICALL
-Java_com_androidtest_mshzhb_androidtest_MainActivity_primeTestCPPhelper(
+Java_com_androidtest_mshzhb_androidtest_MathTestModel_primeTestCPPhelper(
         JNIEnv *env,
         jobject /* this */,
         jlong PRIME_MAX
@@ -82,7 +82,7 @@ extern "C"
 JNIEXPORT jlong
 
 JNICALL
-Java_com_androidtest_mshzhb_androidtest_MainActivity_sumTestCPP(
+Java_com_androidtest_mshzhb_androidtest_MathTestModel_sumTestCPP(
         JNIEnv *env,
         jobject /* this */,
         jlong SUM_MAX
