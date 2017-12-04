@@ -46,5 +46,21 @@
             tools:layout_editor_absoluteX="16dp"
             tools:layout_editor_absoluteY="28dp" />
 
+        <TextView
+            android:id="@+id/textViewPi"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="wait for test result"
+            tools:layout_editor_absoluteX="140dp"
+            tools:layout_editor_absoluteY="33dp" />
+
+        <Button
+            android:id="@+id/buttonPi"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Pi Test"
+            tools:layout_editor_absoluteX="16dp"
+            tools:layout_editor_absoluteY="28dp" />
+
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>

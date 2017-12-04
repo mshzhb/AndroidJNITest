@@ -1,11 +1,11 @@
 #include <jni.h>
 #include <string>
-#include <time.h>
-#include <stdio.h>
 #include <math.h>
-#include <sys/time.h>
+
 
 int my_is_prime(long a);
+
+
 
 extern "C"
 JNIEXPORT jstring
@@ -16,6 +16,48 @@ Java_com_androidtest_mshzhb_androidtest_MainActivity_stringFromJNI(
         jobject /* this */) {
     std::string hello = "Hello from C++";
     return env->NewStringUTF(hello.c_str());
+}
+
+
+double calc1(int num1);
+double calc2(int num1);
+
+extern "C"
+JNIEXPORT jdouble
+
+JNICALL
+Java_com_androidtest_mshzhb_androidtest_MainActivity_piTestCPP(
+        JNIEnv *env,
+        jobject /* this */,
+        jint limit
+) {
+    int j = 0; /* The counter for the loop */
+    double ans1 = 0.0;
+    double ans2 = 0.0;
+    double ans3 = 0; /* The final answer*/
+    int flag = 1; /* 1 means addition and 0 means subtraction */
+    for(j = 1; j <= limit ; j+= 2){
+        if(flag == 1){
+            ans1 += calc1(j);
+            ans2 += calc2(j);
+            flag = 0;
+        } else{
+            ans1 -= calc1(j);
+            ans2 -= calc2(j);
+            flag = 1;
+        }
+    }
+    ans3 = ans1 - ans2;
+    return ans3;
+}
+
+double calc1(int num1)
+{
+    return (16/(num1 * pow(5.0,num1 * 1.0)));
+}
+double calc2(int num1)
+{
+    return (4/(num1 * pow(239.0,num1 * 1.0)));
 }
 
 
