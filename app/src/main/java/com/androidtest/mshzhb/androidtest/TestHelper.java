@@ -20,8 +20,6 @@ import java.util.Map;
  */
 
 public class TestHelper {
-
-
     public static String[] TEST_STRING = {"Prime Test", "Sum Test", "Pi Test"};
 
     public static int PRIME_INDEX = 0;

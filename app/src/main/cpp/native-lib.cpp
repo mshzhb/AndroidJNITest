@@ -18,7 +18,6 @@ Java_com_androidtest_mshzhb_androidtest_MathTestModel_stringFromJNI(
     return env->NewStringUTF(hello.c_str());
 }
 
-
 double calc1(int num1);
 double calc2(int num1);
 
@@ -95,13 +94,6 @@ Java_com_androidtest_mshzhb_androidtest_MathTestModel_sumTestCPP(
     return sum;
 
 }
-
-
-
-
-
-
-
 
 int my_is_prime(long a)
 {
